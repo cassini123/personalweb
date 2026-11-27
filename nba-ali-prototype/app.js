@@ -8,9 +8,10 @@
   };
 
   const playerImgs = {
-    james: "assets/player-lakers.svg",
-    curry: "assets/player-warriors.svg",
-    tatum: "assets/player-celtics.svg",
+    james: "assets/star-james.jpg",
+    curry: "assets/star-curry.jpg",
+    tatum: "assets/star-tatum.jpg",
+    durant: "assets/star-durant.jpg",
   };
 
   const actionCopy = {

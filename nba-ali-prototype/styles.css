@@ -6,11 +6,12 @@
   --purple-600: #7c3aed;
   --purple-500: #a78bfa;
   --purple-300: #ddd6fe;
-  --gold: #fbbf24;
+  --accent: #c4b5fd;
+  --gold: #c4b5fd; /* alias → purple, no yellow */
   --text: #f5f3ff;
   --muted: #a1a1aa;
-  --verified: #34d399;
-  --concept: #f472b6;
+  --verified: #e9d5ff; /* was green → light purple/white */
+  --concept: #a78bfa; /* was pink → purple */
   --glass: rgba(24, 12, 48, 0.55);
   --glass-border: rgba(167, 139, 250, 0.28);
   --radius: 22px;
@@ -66,8 +67,8 @@ body { overflow-x: hidden; }
   font-size: 11px; padding: 5px 12px; border-radius: 999px; font-weight: 700;
   border: 1px solid transparent;
 }
-.chip-v { color: var(--verified); border-color: rgba(52,211,153,.4); background: rgba(6,78,59,.35); }
-.chip-c { color: var(--concept); border-color: rgba(244,114,182,.4); background: rgba(131,24,67,.3); }
+.chip-v { color: #fff; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.06); }
+.chip-c { color: var(--purple-300); border-color: rgba(167,139,250,.45); background: rgba(46,16,101,.45); }
 
 .stage {
   position: relative; z-index: 2;
@@ -163,8 +164,8 @@ body { overflow-x: hidden; }
 .tag {
   display: inline-block; font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700;
 }
-.tag-v { background: rgba(52,211,153,0.15); color: var(--verified); }
-.tag-c { background: rgba(244,114,182,0.15); color: var(--concept); }
+.tag-v { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+.tag-c { background: rgba(124,58,237,0.25); color: var(--purple-300); border: 1px solid rgba(167,139,250,0.4); }
 
 .btn-primary {
   width: 100%; border: none; cursor: pointer;
@@ -203,7 +204,7 @@ body { overflow-x: hidden; }
   margin-bottom: 12px;
 }
 .car-card {
-  flex: 0 0 96px;
+  flex: 0 0 78px;
   background: transparent; border: none; cursor: pointer;
   padding: 0; position: relative;
   transition: transform 0.25s ease, filter 0.25s;
@@ -212,13 +213,14 @@ body { overflow-x: hidden; }
 }
 .car-card:first-child { transform: scale(0.88) rotateY(-12deg); }
 .car-card.active {
-  flex-basis: 130px;
+  flex-basis: 112px;
   filter: brightness(1);
   transform: scale(1.05) rotateY(0);
   z-index: 2;
 }
 .car-card img {
-  width: 100%; display: block; border-radius: 16px;
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+  display: block; border-radius: 16px;
   box-shadow: 0 12px 32px rgba(0,0,0,0.5);
   border: 1px solid var(--glass-border);
 }
@@ -300,7 +302,7 @@ body { overflow-x: hidden; }
   border: 1px solid rgba(167,139,250,0.35); color: #e9d5ff;
 }
 .action-pills button.on {
-  background: linear-gradient(135deg, #7c3aed, #db2777);
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
   border-color: transparent; color: #fff;
   box-shadow: 0 0 18px rgba(124,58,237,0.45);
 }
@@ -328,8 +330,9 @@ body { overflow-x: hidden; }
   display: flex; flex-direction: column; align-items: center;
 }
 .result-card img {
-  width: 70%; max-width: 200px; border-radius: 16px;
+  width: 78%; max-width: 220px; border-radius: 16px;
   position: relative; z-index: 1;
+  aspect-ratio: 3/4; object-fit: cover; object-position: top;
 }
 .result-glow {
   position: absolute; inset: 20% 15%;
@@ -350,7 +353,7 @@ body { overflow-x: hidden; }
   background: rgba(124,58,237,0.25); color: #fff;
 }
 .toast {
-  text-align: center; font-size: 12px; color: var(--verified);
+  text-align: center; font-size: 12px; color: var(--purple-300);
   padding: 8px; margin-bottom: 6px;
 }
 
@@ -389,3 +392,5 @@ body { overflow-x: hidden; }
   padding: 0 16px 32px;
 }
 .proto-foot a { color: var(--purple-500); }
+
+.eyebrow.brand-line { display: none !important; }
