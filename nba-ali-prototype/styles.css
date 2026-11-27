@@ -417,43 +417,26 @@ body { overflow-x: hidden; }
 
 .eyebrow.brand-line { display: none !important; }
 
-/* ===== Landscape split play ===== */
-body.play-mode .topbar,
-body.play-mode .flow-nav,
-body.play-mode .proto-foot,
-body.play-mode .ambient { display: none !important; }
-body.play-mode { background: #000; }
-body.play-mode .stage {
-  max-width: none; padding: 0; margin: 0;
-  min-height: 100vh; min-height: 100dvh;
-}
-.screen-play {
-  display: none;
-  grid-template-columns: 1fr !important;
-  width: 100%;
-  min-height: 100vh; min-height: 100dvh;
-}
-.screen-play.active { display: block !important; }
-
-.play-shell {
-  display: flex; flex-direction: column;
-  width: 100%; height: 100vh; height: 100dvh;
-  background: #050308;
-  overflow: hidden;
+/* ===== Play · portrait phone dual-pane + landscape expand ===== */
+.phone-body-play {
+  padding: 36px 12px 14px;
+  min-height: 720px;
+  gap: 8px;
 }
 .play-chrome {
-  flex: 0 0 40px;
-  display: flex; align-items: center; gap: 12px;
-  padding: 0 12px;
-  background: #0a0612;
-  border-bottom: 1px solid rgba(167,139,250,0.25);
+  flex: 0 0 auto;
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 8px;
+  background: rgba(10,6,18,0.85);
+  border: 1px solid rgba(167,139,250,0.25);
+  border-radius: 12px;
   z-index: 5;
 }
 .play-back, .play-finish {
   border: 1px solid rgba(255,255,255,0.25);
   background: rgba(255,255,255,0.06);
   color: #fff; border-radius: 999px;
-  padding: 4px 12px; font-size: 12px; cursor: pointer;
+  padding: 4px 10px; font-size: 11px; cursor: pointer;
   font-family: var(--font-body);
 }
 .play-finish {
@@ -461,28 +444,64 @@ body.play-mode .stage {
   background: linear-gradient(135deg, #7c3aed, #a78bfa);
   border-color: transparent;
 }
-.play-title { font-size: 12px; color: var(--purple-300); font-weight: 600; }
+.play-title { font-size: 11px; color: var(--purple-300); font-weight: 600; }
 .play-timer {
   font-family: var(--font-display);
-  font-size: 14px; font-weight: 700; color: #fff;
+  font-size: 13px; font-weight: 700; color: #fff;
   letter-spacing: 0.06em;
 }
 
+.play-split {
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
 .pane {
   position: relative;
   display: flex; flex-direction: column;
   min-height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(167,139,250,0.3);
+  background: #050308;
 }
-.pane-top { flex: 0 0 38%; border-bottom: 1px solid rgba(167,139,250,0.3); }
+.pane-top { flex: 0 0 38%; }
 .pane-bottom { flex: 1 1 62%; }
-/* Play-screen overlay pills removed (user request); keep rule as belt-and-suspenders */
 .pane-label { display: none; }
-.pane-label span { color: var(--purple-300); font-weight: 500; margin-left: 8px; }
+
+.pane-open {
+  position: absolute; inset: 0; z-index: 8;
+  display: grid; place-items: center;
+  border: 0; cursor: pointer;
+  background: linear-gradient(180deg, rgba(5,3,8,0.15), rgba(5,3,8,0.55));
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  transition: background 0.2s, opacity 0.2s;
+}
+.pane-open::after {
+  content: "";
+  position: absolute;
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.55);
+  background: rgba(124,58,237,0.35);
+  box-shadow: 0 0 24px rgba(124,58,237,0.55);
+  top: 50%; left: 50%;
+  transform: translate(-50%, calc(-50% - 28px));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M8 4H4v4M16 4h4v4M8 20H4v-4M16 20h4v-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px;
+}
+.pane-open:hover { background: linear-gradient(180deg, rgba(5,3,8,0.05), rgba(109,40,217,0.45)); }
 
 .story-track {
   flex: 1;
-  display: flex; gap: 10px;
-  padding: 12px;
+  display: flex; gap: 8px;
+  padding: 10px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   background:
@@ -490,9 +509,9 @@ body.play-mode .stage {
     #050308;
 }
 .story-card {
-  flex: 0 0 min(42vw, 320px);
+  flex: 0 0 78%;
   scroll-snap-align: start;
-  border-radius: 14px; overflow: hidden;
+  border-radius: 12px; overflow: hidden;
   border: 1px solid rgba(167,139,250,0.25);
   background: #0e0818;
   position: relative;
@@ -507,15 +526,16 @@ body.play-mode .stage {
 }
 .story-card img {
   width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+  min-height: 100%;
 }
 .story-cap {
   position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 10px 12px 14px;
+  padding: 8px 10px 12px;
   background: linear-gradient(transparent, rgba(0,0,0,0.85));
   color: #fff;
 }
-.story-cap strong { display: block; font-size: 13px; }
-.story-cap span { font-size: 11px; color: #c4b5fd; }
+.story-cap strong { display: block; font-size: 12px; }
+.story-cap span { font-size: 10px; color: #c4b5fd; }
 .story-progress {
   position: absolute; left: 0; right: 0; top: 0; height: 3px;
   background: rgba(255,255,255,0.15);
@@ -529,6 +549,7 @@ body.play-mode .stage {
   flex: 1; position: relative; overflow: hidden;
   background: #000;
   touch-action: none;
+  min-height: 220px;
 }
 .court-bg {
   position: absolute; inset: 0;
@@ -545,29 +566,32 @@ body.play-mode .stage {
 .court-fx.flash { opacity: 1; }
 
 .hud-score {
-  position: absolute; top: 36px; left: 50%; transform: translateX(-50%);
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
   z-index: 3;
   display: flex; align-items: baseline; gap: 6px;
   font-family: var(--font-display);
-  font-weight: 700; color: #fff;
+  font-weight: 700; color: #fff; font-size: 14px;
   background: rgba(0,0,0,0.5);
   border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px; padding: 6px 14px;
+  border-radius: 12px; padding: 4px 10px;
   backdrop-filter: blur(8px);
 }
 .hud-score em { color: var(--purple-300); font-style: normal; }
-.hud-score small { margin-left: 10px; font-size: 11px; color: #c4b5fd; font-weight: 600; }
+.hud-score small { margin-left: 8px; font-size: 10px; color: #c4b5fd; font-weight: 600; }
 .hud-action {
-  position: absolute; top: 78px; left: 50%; transform: translateX(-50%);
-  z-index: 3; font-size: 12px; color: #fff;
+  position: absolute; top: 42px; left: 50%; transform: translateX(-50%);
+  z-index: 3; font-size: 10px; color: #fff;
   background: rgba(124,58,237,0.35);
-  border-radius: 999px; padding: 4px 12px;
+  border-radius: 999px; padding: 3px 10px;
   white-space: nowrap;
+  max-width: 90%; overflow: hidden; text-overflow: ellipsis;
 }
 
 .stick {
-  position: absolute; left: 28px; bottom: 28px;
-  width: 110px; height: 110px; z-index: 4;
+  position: absolute; left: 12px; bottom: 12px;
+  width: 72px; height: 72px; z-index: 4;
+  pointer-events: none; /* only interactive after landscape expand */
+  opacity: 0.7;
 }
 .stick-base {
   width: 100%; height: 100%; border-radius: 50%;
@@ -577,7 +601,7 @@ body.play-mode .stage {
 }
 .stick-knob {
   position: absolute; left: 50%; top: 50%;
-  width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  width: 32px; height: 32px; margin: -16px 0 0 -16px;
   border-radius: 50%;
   background: linear-gradient(145deg, #c4b5fd, #7c3aed);
   box-shadow: 0 0 18px rgba(124,58,237,0.55);
@@ -585,15 +609,19 @@ body.play-mode .stage {
 }
 
 .skills {
-  position: absolute; right: 20px; bottom: 24px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  position: absolute; right: 10px; bottom: 10px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
   z-index: 4;
+  pointer-events: none;
+  opacity: 0.75;
+  transform: scale(0.72);
+  transform-origin: bottom right;
 }
 .skill {
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 56px; height: 56px; border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.35);
   background: rgba(14,8,24,0.75);
-  color: #fff; font-size: 12px; font-weight: 700;
+  color: #fff; font-size: 11px; font-weight: 700;
   cursor: pointer; font-family: var(--font-body);
   backdrop-filter: blur(8px);
 }
@@ -605,22 +633,106 @@ body.play-mode .stage {
 .skill-ult {
   grid-column: 1 / -1;
   justify-self: center;
-  width: 76px; height: 76px;
+  width: 64px; height: 64px;
   border-color: #fff;
   background: rgba(124,58,237,0.45);
-  font-size: 14px;
+  font-size: 13px;
 }
 
-@media (max-width: 700px) and (orientation: portrait) {
-  .play-shell::after {
-    content: "请横屏体验双窗对战";
-    position: absolute; inset: 0; z-index: 20;
-    display: grid; place-items: center;
-    background: rgba(5,3,8,0.92);
-    color: #fff; font-size: 16px; font-weight: 700;
-    pointer-events: none;
-  }
-  body.play-mode.allow-portrait .play-shell::after { display: none; }
+/* Landscape expand overlay */
+.ls-backdrop {
+  position: fixed; inset: 0; z-index: 80;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(109,40,217,0.35), transparent 65%),
+    rgba(0,0,0,0.88);
+  display: none;
+}
+.ls-backdrop[hidden] { display: none !important; }
+body.ls-open .ls-backdrop { display: block; }
+.ls-close {
+  position: fixed; top: 18px; right: 22px; z-index: 120;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(14,8,24,0.85);
+  color: #fff; border-radius: 999px;
+  padding: 8px 16px; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: var(--font-body);
+}
+.ls-hint {
+  position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+  z-index: 120; color: var(--purple-300); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Lift pane into landscape phone bezel */
+body.ls-open.ls-top #pane-top,
+body.ls-open.ls-bottom #pane-bottom {
+  position: fixed !important;
+  z-index: 100;
+  left: 50%; top: 50%;
+  width: min(92vw, 760px);
+  height: min(56vw, 420px);
+  max-height: calc(100vh - 100px);
+  transform: translate(-50%, -50%);
+  border-radius: 28px;
+  border: 2px solid rgba(167,139,250,0.5);
+  box-shadow:
+    0 0 0 1px rgba(109,40,217,0.2),
+    0 0 50px rgba(109,40,217,0.45),
+    0 30px 80px rgba(0,0,0,0.7);
+  flex: none !important;
+  animation: lsIn 0.28s ease;
+}
+@keyframes lsIn {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.94); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+body.ls-open.ls-top #pane-top .pane-open,
+body.ls-open.ls-bottom #pane-bottom .pane-open { display: none; }
+
+body.ls-open.ls-top #pane-top .story-card { flex: 0 0 min(36vw, 280px); }
+body.ls-open.ls-bottom #pane-bottom .stick,
+body.ls-open.ls-bottom #pane-bottom .skills {
+  pointer-events: auto;
+  opacity: 1;
+  transform: none;
+}
+body.ls-open.ls-bottom #pane-bottom .stick {
+  width: 110px; height: 110px;
+  left: 28px; bottom: 24px;
+}
+body.ls-open.ls-bottom #pane-bottom .stick-knob {
+  width: 46px; height: 46px; margin: -23px 0 0 -23px;
+}
+body.ls-open.ls-bottom #pane-bottom .skills {
+  right: 20px; bottom: 20px; gap: 10px;
+}
+body.ls-open.ls-bottom #pane-bottom .skill { width: 64px; height: 64px; font-size: 12px; }
+body.ls-open.ls-bottom #pane-bottom .skill-ult { width: 76px; height: 76px; font-size: 14px; }
+body.ls-open.ls-bottom #pane-bottom .hud-score { top: 18px; font-size: 18px; padding: 6px 14px; }
+body.ls-open.ls-bottom #pane-bottom .hud-action { top: 58px; font-size: 12px; }
+
+/* Do NOT use filter/transform on #phone-play while expanded —
+   those create a containing block and clip position:fixed panes. */
+body.ls-open #phone-play {
+  opacity: 0;
+  pointer-events: none;
+}
+body.ls-open .aside,
+body.ls-open .topbar,
+body.ls-open .flow-nav,
+body.ls-open .proto-foot { opacity: 0.15; pointer-events: none; }
+
+/* Landscape phone side notches for expand shell */
+body.ls-open.ls-top #pane-top::before,
+body.ls-open.ls-bottom #pane-bottom::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 8px;
+  transform: translateX(-50%);
+  width: 72px; height: 6px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.18);
+  z-index: 9;
 }
 
 /* capability tags removed */

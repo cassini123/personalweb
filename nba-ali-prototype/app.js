@@ -38,14 +38,39 @@
   function $(sel) { return document.querySelector(sel); }
   function $all(sel) { return Array.from(document.querySelectorAll(sel)); }
 
+  function closeLandscape() {
+    document.body.classList.remove("ls-open", "ls-top", "ls-bottom");
+    const bd = $("#ls-backdrop");
+    if (bd) {
+      bd.hidden = true;
+      bd.setAttribute("aria-hidden", "true");
+    }
+    const hint = $("#ls-hint");
+    if (hint) hint.textContent = "横屏体验";
+  }
+
+  function openLandscape(which) {
+    closeLandscape();
+    document.body.classList.add("ls-open", "ls-" + which);
+    const bd = $("#ls-backdrop");
+    if (bd) {
+      bd.hidden = false;
+      bd.setAttribute("aria-hidden", "false");
+    }
+    const hint = $("#ls-hint");
+    if (hint) {
+      hint.textContent = which === "top" ? "横屏 · 过去分镜" : "横屏 · 第一人称球场";
+    }
+  }
+
   function showScreen(id) {
+    closeLandscape();
     $all(".screen").forEach((s) => s.classList.remove("active"));
     const el = document.getElementById("screen-" + id);
     if (el) el.classList.add("active");
 
     const playMode = id === "play";
     document.body.classList.toggle("play-mode", playMode);
-    document.body.classList.toggle("allow-portrait", playMode);
 
     const order = ["enter", "identity", "play", "result"];
     const idx = order.indexOf(id);
@@ -124,6 +149,21 @@
       if (go === "result") prepareResult();
       showScreen(go);
     });
+  });
+
+  // portrait dual-pane → landscape expand
+  $all("[data-expand]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openLandscape(btn.getAttribute("data-expand"));
+    });
+  });
+  $("#ls-close")?.addEventListener("click", closeLandscape);
+  $("#ls-backdrop")?.addEventListener("click", (e) => {
+    if (e.target === $("#ls-backdrop")) closeLandscape();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLandscape();
   });
 
   $all("#player-carousel .car-card").forEach((card) => {
