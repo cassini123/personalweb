@@ -19,10 +19,10 @@
   <path d="M140 300 Q140 220 220 220 L580 220 Q660 220 660 300 Q660 380 580 380 L220 380 Q140 380 140 300Z" stroke="#8B5CF6" stroke-opacity=".25" stroke-width="1"/>
   <!-- hoop left -->
   <rect x="118" y="250" width="8" height="100" rx="2" fill="#C4B5FD" opacity=".5"/>
-  <ellipse cx="155" cy="280" rx="28" ry="10" stroke="#FBBF24" stroke-width="3" fill="none"/>
+  <ellipse cx="155" cy="280" rx="28" ry="10" stroke="#e9d5ff" stroke-width="3" fill="none"/>
   <!-- hoop right -->
   <rect x="674" y="250" width="8" height="100" rx="2" fill="#C4B5FD" opacity=".5"/>
-  <ellipse cx="645" cy="280" rx="28" ry="10" stroke="#FBBF24" stroke-width="3" fill="none"/>
-  <circle cx="400" cy="250" r="18" fill="#F97316" opacity=".85"/>
+  <ellipse cx="645" cy="280" rx="28" ry="10" stroke="#e9d5ff" stroke-width="3" fill="none"/>
+  <circle cx="400" cy="250" r="18" fill="#c4b5fd" opacity=".85"/>
   <circle cx="400" cy="250" r="12" stroke="#1a0a00" stroke-width="1.5" fill="none" opacity=".5"/>
 </svg>

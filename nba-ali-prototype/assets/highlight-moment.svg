@@ -17,9 +17,9 @@
   <ellipse cx="380" cy="120" rx="22" ry="22" fill="#c4a882"/>
   <path d="M360 145 L400 155 L420 220 L390 250 L360 230 L340 180 Z" fill="#552583"/>
   <path d="M400 155 L460 100 L480 110" stroke="#c4a882" stroke-width="14" stroke-linecap="round"/>
-  <circle cx="490" cy="95" r="14" fill="#F97316"/>
+  <circle cx="490" cy="95" r="14" fill="#c4b5fd"/>
   <rect x="500" y="60" width="6" height="80" fill="#C4B5FD" opacity=".6"/>
-  <ellipse cx="495" cy="70" rx="22" ry="8" stroke="#FBBF24" stroke-width="3" fill="none"/>
+  <ellipse cx="495" cy="70" rx="22" ry="8" stroke="#e9d5ff" stroke-width="3" fill="none"/>
   <text x="32" y="40" fill="#E9D5FF" font-family="system-ui,sans-serif" font-size="14" font-weight="600">2016 FINALS G7 · 0.4s</text>
   <text x="32" y="330" fill="#A78BFA" font-family="system-ui,sans-serif" font-size="12">可改写球员动作 · 世界模型重算结果</text>
 </svg>
