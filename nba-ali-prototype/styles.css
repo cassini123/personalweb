@@ -711,11 +711,16 @@ body.ls-open.ls-bottom #pane-bottom .skill-ult { width: 76px; height: 76px; font
 body.ls-open.ls-bottom #pane-bottom .hud-score { top: 18px; font-size: 18px; padding: 6px 14px; }
 body.ls-open.ls-bottom #pane-bottom .hud-action { top: 58px; font-size: 12px; }
 
-/* Do NOT use filter/transform on #phone-play while expanded —
-   those create a containing block and clip position:fixed panes. */
+/* Hide portrait shell without opacity (opacity would also hide fixed panes).
+   visibility:hidden on parent + visible on expanded pane is OK. */
 body.ls-open #phone-play {
-  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+}
+body.ls-open.ls-top #pane-top,
+body.ls-open.ls-bottom #pane-bottom {
+  visibility: visible;
+  pointer-events: auto;
 }
 body.ls-open .aside,
 body.ls-open .topbar,
