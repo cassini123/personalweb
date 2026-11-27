@@ -74,8 +74,6 @@
     $all(".story-card").forEach((card, i) => {
       card.classList.toggle("on", i === state.clip);
     });
-    const meta = $("#clip-meta");
-    if (meta) meta.textContent = "Clip " + (state.clip + 1) + "/4 · " + Math.max(0, state.clipSeconds - Math.floor(state.clipElapsed)) + "s";
     const bar = $("#clip-progress");
     if (bar) bar.style.width = Math.min(100, (state.clipElapsed / state.clipSeconds) * 100) + "%";
     const onCard = $(".story-card.on");

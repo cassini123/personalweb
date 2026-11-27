@@ -475,20 +475,14 @@ body.play-mode .stage {
 }
 .pane-top { flex: 0 0 38%; border-bottom: 1px solid rgba(167,139,250,0.3); }
 .pane-bottom { flex: 1 1 62%; }
-.pane-label {
-  position: absolute; top: 8px; left: 12px; z-index: 4;
-  font-size: 11px; font-weight: 700; color: #fff;
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(167,139,250,0.35);
-  border-radius: 999px; padding: 4px 10px;
-  backdrop-filter: blur(8px);
-}
+/* Play-screen overlay pills removed (user request); keep rule as belt-and-suspenders */
+.pane-label { display: none; }
 .pane-label span { color: var(--purple-300); font-weight: 500; margin-left: 8px; }
 
 .story-track {
   flex: 1;
   display: flex; gap: 10px;
-  padding: 36px 12px 12px;
+  padding: 12px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   background:
