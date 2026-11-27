@@ -628,3 +628,6 @@ body.play-mode .stage {
   }
   body.play-mode.allow-portrait .play-shell::after { display: none; }
 }
+
+/* capability tags removed */
+.tag, .tag-v, .tag-c, .result-meta, .legend-row, .chip, .chip-v, .chip-c { display: none !important; }
