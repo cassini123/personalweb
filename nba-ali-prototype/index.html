@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>COURTWORLD · NBA × 阿里 交互原型</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient ambient-2" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="logo">COURT<span>WORLD</span></div>
+    <div class="top-meta">
+      <span class="chip chip-v">已验证技术能力</span>
+      <span class="chip chip-c">概念模拟</span>
+    </div>
+  </header>
+
+  <main class="stage">
+    <!-- ========== SCREEN: ENTER ========== -->
+    <section class="screen active" id="screen-enter" data-screen="enter">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <p class="eyebrow">NBA × 阿里 · WORLD MODEL</p>
+          <h1 class="hero-title">无法到场<br/><em>也能改写终场</em></h1>
+          <p class="hero-sub">用世界模型把碎片赛况变成可互动、可预测的沉浸体验</p>
+          <div class="hero-visual">
+            <img src="assets/court-glow.svg" alt="紫光球场" />
+            <div class="halo-ring"></div>
+          </div>
+          <div class="legend-row">
+            <span class="tag tag-v">已验证 · 品牌动效</span>
+            <span class="tag tag-c">概念 · 世界模型入口</span>
+          </div>
+          <button class="btn-primary" data-go="identity">进入球场</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>01 · 进入</h2>
+        <p>黑底紫晕开场。单一 CTA 进入身份选择。右侧标注能力边界。</p>
+      </aside>
+    </section>
+
+    <!-- ========== SCREEN: IDENTITY ========== -->
+    <section class="screen" id="screen-identity" data-screen="identity">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="enter" aria-label="返回">←</button>
+          <p class="eyebrow">选择身份</p>
+          <h2 class="screen-h">你想站在谁身边？</h2>
+          <p class="screen-p">滑动球星卡 · 锁定本场视角</p>
+
+          <div class="carousel" id="player-carousel">
+            <button class="car-card" data-player="curry" type="button">
+              <img src="assets/player-warriors.svg" alt="Curry" />
+              <span class="car-label">CURRY</span>
+            </button>
+            <button class="car-card active" data-player="james" type="button">
+              <img src="assets/player-lakers.svg" alt="James" />
+              <span class="car-label">JAMES</span>
+              <span class="tag tag-v car-badge">卡面动效 · 已验证</span>
+            </button>
+            <button class="car-card" data-player="tatum" type="button">
+              <img src="assets/player-celtics.svg" alt="Tatum" />
+              <span class="car-label">TATUM</span>
+            </button>
+          </div>
+
+          <div class="role-row">
+            <button class="role-pill active" data-role="star" type="button">球星第一视角</button>
+            <button class="role-pill" data-role="fan" type="button">旁观席球迷</button>
+          </div>
+          <p class="hint"><span class="tag tag-c">概念模拟</span> 身份将驱动世界模型初始状态</p>
+          <button class="btn-primary" data-go="mode">锁定身份</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>02 · 选择身份</h2>
+        <p>3D 风格卡片轮播（参考 MISE / Apple Football 卡面）。选球星或旁观席。</p>
+      </aside>
+    </section>
+
+    <!-- ========== SCREEN: MODE ========== -->
+    <section class="screen" id="screen-mode" data-screen="mode">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="identity" aria-label="返回">←</button>
+          <p class="eyebrow">双模式入口</p>
+          <h2 class="screen-h">今晚怎么玩？</h2>
+          <p class="screen-p">过往高光改写 · 未来赛事模拟</p>
+
+          <button class="mode-card glass" data-go="interact-past" type="button">
+            <div class="mode-icon">⏪</div>
+            <div>
+              <strong>过往赛事高光</strong>
+              <span>改写关键帧动作，重算结果</span>
+            </div>
+            <span class="tag tag-c">概念模拟</span>
+          </button>
+
+          <button class="mode-card glass accent" data-go="interact-future" type="button">
+            <div class="mode-icon">⚡</div>
+            <div>
+              <strong>未来赛事模拟</strong>
+              <span>选阵容与策略，生成预测</span>
+            </div>
+            <span class="tag tag-c">概念模拟</span>
+          </button>
+
+          <p class="hint"><span class="tag tag-v">已验证</span> 双入口信息架构与卡片布局</p>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>03 · 模式分叉</h2>
+        <p>产品双玩法入口。点任一卡进入对应互动屏。</p>
+      </aside>
+    </section>
+
+    <!-- ========== SCREEN: INTERACT PAST ========== -->
+    <section class="screen" id="screen-interact-past" data-screen="interact-past">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="mode" aria-label="返回">←</button>
+          <p class="eyebrow">高光互动</p>
+          <h2 class="screen-h">改这一下</h2>
+          <p class="screen-p">2016 Finals G7 · 0.4s</p>
+
+          <div class="moment-frame glass">
+            <img src="assets/highlight-moment.svg" alt="高光时刻" />
+            <div class="timeline">
+              <input type="range" id="timeline" min="0" max="100" value="92" />
+              <div class="timeline-labels"><span>0:00</span><span>0.4s 关键格</span></div>
+            </div>
+          </div>
+
+          <p class="micro-label">选择球员动作 <span class="tag tag-c">概念 · 动作改写</span></p>
+          <div class="action-pills" id="action-pills">
+            <button type="button" data-action="pass">传球</button>
+            <button type="button" class="on" data-action="drive">突破</button>
+            <button type="button" data-action="three">三分</button>
+            <button type="button" data-action="fake">假动作</button>
+          </div>
+          <p class="hint"><span class="tag tag-v">已验证</span> 高光回放帧浏览</p>
+          <button class="btn-primary" data-go="result" data-result="past">世界模型重算</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>04A · 互动 · 高光</h2>
+        <p>拖时间轴定格关键帧，点选动作。演示层模拟世界模型重算。</p>
+      </aside>
+    </section>
+
+    <!-- ========== SCREEN: INTERACT FUTURE ========== -->
+    <section class="screen" id="screen-interact-future" data-screen="interact-future">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="mode" aria-label="返回">←</button>
+          <p class="eyebrow">未来模拟</p>
+          <h2 class="screen-h">下一场，你来布阵</h2>
+          <p class="screen-p">选核心球员 · 设定节奏</p>
+
+          <div class="lineup" id="lineup">
+            <button type="button" class="slot on" data-slot="pg">PG<br/><small>CURRY</small></button>
+            <button type="button" class="slot" data-slot="sg">SG<br/><small>选人</small></button>
+            <button type="button" class="slot on" data-slot="sf">SF<br/><small>JAMES</small></button>
+            <button type="button" class="slot" data-slot="pf">PF<br/><small>选人</small></button>
+            <button type="button" class="slot" data-slot="c">C<br/><small>选人</small></button>
+          </div>
+
+          <p class="micro-label">比赛节奏 <span class="tag tag-c">概念 · 赛果模拟</span></p>
+          <div class="action-pills" id="strategy-pills">
+            <button type="button" class="on" data-strategy="pace">外线风暴</button>
+            <button type="button" data-strategy="paint">内线绞杀</button>
+            <button type="button" data-strategy="fast">防守反击</button>
+          </div>
+          <button class="btn-primary" data-go="result" data-result="future">开始模拟</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>04B · 互动 · 预测</h2>
+        <p>阵容卡 + 策略胶囊。生成属于用户的预测叙事（概念层）。</p>
+      </aside>
+    </section>
+
+    <!-- ========== SCREEN: RESULT ========== -->
+    <section class="screen" id="screen-result" data-screen="result">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="mode" aria-label="返回">←</button>
+          <p class="eyebrow">我的高光卡</p>
+          <h2 class="screen-h" id="result-title">终场改写成功</h2>
+          <p class="screen-p" id="result-sub">突破上篮 · +2 · 加时锁定</p>
+
+          <div class="result-card glass">
+            <img id="result-img" src="assets/player-lakers.svg" alt="结果卡" />
+            <div class="result-glow"></div>
+            <div class="result-meta">
+              <span class="tag tag-c">概念模拟 · 世界模型生成</span>
+              <span class="tag tag-v">已验证 · 卡片导出</span>
+            </div>
+          </div>
+
+          <div class="share-row">
+            <button type="button" class="share-btn" id="btn-save">保存卡片</button>
+            <button type="button" class="share-btn" id="btn-weibo">分享微博</button>
+            <button type="button" class="share-btn on" id="btn-ali">阿里体育</button>
+          </div>
+          <p class="toast" id="toast" hidden>已生成分享预览（演示）</p>
+          <button class="btn-ghost" data-go="enter">再来一局</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>05 · 生成 / 分享</h2>
+        <p>输出个性化高光卡。分享链路为已验证能力；内容本身标注概念模拟。</p>
+      </aside>
+    </section>
+  </main>
+
+  <nav class="flow-nav" aria-label="流程导航">
+    <button type="button" class="flow-dot active" data-go="enter" title="进入">1</button>
+    <button type="button" class="flow-dot" data-go="identity" title="身份">2</button>
+    <button type="button" class="flow-dot" data-go="mode" title="模式">3</button>
+    <button type="button" class="flow-dot" data-go="interact-past" title="互动">4</button>
+    <button type="button" class="flow-dot" data-go="result" title="分享">5</button>
+  </nav>
+
+  <footer class="proto-foot">
+    <a href="../nba-ali-user-journey.html">← 用户旅程 Storyboard</a>
+    <span>· CSS tokens 见 README · 打开方式：浏览器直接打开本文件</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D428A"/>
+      <stop offset="55%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#050a14"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="#FFC72C" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8c4a0"/>
+      <stop offset="100%" stop-color="#c49a6c"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="480" rx="28" fill="url(#bg)"/>
+  <ellipse cx="180" cy="130" rx="150" ry="130" fill="url(#halo)"/>
+  <path d="M108 250 Q180 210 252 250 L268 400 Q180 430 92 400 Z" fill="#1D428A"/>
+  <path d="M130 248 L145 400 M230 248 L215 400" stroke="#FFC72C" stroke-width="3.5"/>
+  <text x="180" y="325" text-anchor="middle" fill="#FFC72C" font-family="Arial Black, sans-serif" font-size="72" font-weight="900">30</text>
+  <rect x="162" y="198" width="36" height="28" rx="8" fill="url(#skin)"/>
+  <ellipse cx="180" cy="155" rx="50" ry="56" fill="url(#skin)"/>
+  <!-- curly hair -->
+  <circle cx="145" cy="118" r="22" fill="#3d2914"/>
+  <circle cx="175" cy="105" r="24" fill="#3d2914"/>
+  <circle cx="210" cy="115" r="22" fill="#3d2914"/>
+  <circle cx="155" cy="135" r="16" fill="#3d2914"/>
+  <circle cx="200" cy="132" r="16" fill="#3d2914"/>
+  <ellipse cx="160" cy="155" rx="4.5" ry="5.5" fill="#2a1810"/>
+  <ellipse cx="200" cy="155" rx="4.5" ry="5.5" fill="#2a1810"/>
+  <path d="M170 176 Q180 184 190 176" stroke="#5c3d2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M108 260 Q65 310 95 355" stroke="url(#skin)" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <path d="M252 255 Q310 240 320 200" stroke="url(#skin)" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <!-- shooting pose ball -->
+  <circle cx="325" cy="175" r="20" fill="#F97316"/>
+  <path d="M310 175 H340 M325 160 V190" stroke="#1a0a00" stroke-width="1.2" opacity=".45"/>
+  <text x="180" y="448" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="22" font-weight="700">CURRY</text>
+  <text x="180" y="468" text-anchor="middle" fill="#93C5FD" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2">WARRIORS · PG</text>
+</svg>
