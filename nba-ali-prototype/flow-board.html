@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>COURTWORLD · 全流程交互大图</title>
+<style>
+  :root { --bg:#050308; --p:#7c3aed; --pl:#a78bfa; --w:#fff; --m:#a1a1aa; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--w);font-family:"Noto Sans SC",system-ui,sans-serif;
+    background-image:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(109,40,217,.4),transparent 70%);
+    padding:40px 36px 60px;min-width:1600px}
+  h1{font-size:36px;font-weight:900;letter-spacing:-.02em}
+  h1 span{color:var(--pl)}
+  .sub{color:var(--m);margin:8px 0 28px;font-size:14px;max-width:900px;line-height:1.6}
+  .row{display:flex;gap:28px;align-items:flex-start;justify-content:center}
+  .step{width:340px;display:flex;flex-direction:column;gap:12px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+    color:var(--pl);letter-spacing:.12em;text-transform:uppercase}
+  .badge i{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);
+    color:#fff;display:grid;place-items:center;font-style:normal;font-size:11px}
+  .phone{width:300px;height:620px;border-radius:36px;border:2px solid rgba(167,139,250,.45);
+    background:#000;overflow:hidden;position:relative;
+    box-shadow:0 0 0 1px rgba(109,40,217,.2),0 0 40px rgba(109,40,217,.35),0 30px 60px rgba(0,0,0,.55)}
+  .phone.wide{width:560px;height:340px;border-radius:18px}
+  .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:18px;
+    background:#111;border-radius:10px;z-index:2}
+  .shot{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .logic{background:rgba(24,12,48,.65);border:1px solid rgba(167,139,250,.3);border-radius:14px;
+    padding:12px 14px;font-size:12px;line-height:1.55;color:#ddd6fe;min-height:110px}
+  .logic strong{display:block;color:#fff;font-size:13px;margin-bottom:6px}
+  .logic li{margin-left:14px;margin-top:3px}
+  .arrow{align-self:center;font-size:28px;color:var(--pl);padding-top:180px}
+  .note{margin-top:36px;padding:16px 18px;border-radius:14px;border:1px dashed rgba(167,139,250,.4);
+    color:var(--m);font-size:13px;line-height:1.6}
+  .note b{color:#fff}
+</style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+  <h1>COURTWORLD <span>×</span> 全流程交互逻辑</h1>
+  <p class="sub">紫 / 黑 / 白 · 进入 → 选球星 → 竖屏双窗（点开横屏）→ 结算分享。能力标签已移除。</p>
+
+  <div class="row">
+    <div class="step">
+      <div class="badge"><i>1</i> ENTER 进入</div>
+      <div class="phone"><div class="notch"></div>
+        <img class="shot" src="assets/star-james.jpg" alt="enter" style="object-position:center top;opacity:.85;filter:brightness(.7)"/>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(transparent 30%,#050308 75%)">
+          <div style="font-size:22px;font-weight:900;line-height:1.25">无法到场<br/>也能改写终场</div>
+          <div style="margin-top:14px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:999px;text-align:center;padding:12px;font-weight:700">进入球场</div>
+        </div>
+      </div>
+      <div class="logic">
+        <strong>交互逻辑</strong>
+        <ul>
+          <li>首屏品牌主张 + 球星卡视觉</li>
+          <li>主 CTA「进入球场」→ 身份页</li>
+          <li>无能力标签</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step">
+      <div class="badge"><i>2</i> IDENTITY 选身份</div>
+      <div class="phone"><div class="notch"></div>
+        <div style="padding:40px 14px 16px;height:100%;background:radial-gradient(ellipse at 50% 10%,rgba(109,40,217,.5),#050308 60%)">
+          <div style="font-size:18px;font-weight:900;margin-bottom:8px">你想站在谁身边？</div>
+          <div style="display:flex;gap:6px;justify-content:center;align-items:flex-end;height:340px">
+            <img src="assets/star-curry.jpg" style="width:70px;border-radius:12px;opacity:.6"/>
+            <img src="assets/star-james.jpg" style="width:110px;border-radius:14px;border:1px solid #fff;box-shadow:0 0 24px rgba(124,58,237,.6)"/>
+            <img src="assets/star-tatum.jpg" style="width:70px;border-radius:12px;opacity:.6"/>
+          </div>
+          <div style="margin-top:12px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:999px;text-align:center;padding:12px;font-weight:700">锁定并开打</div>
+        </div>
+      </div>
+      <div class="logic">
+        <strong>交互逻辑</strong>
+        <ul>
+          <li>滑动/点击球星卡选中</li>
+          <li>可选第一视角 / 旁观席</li>
+          <li>「锁定并开打」→ 横屏双窗</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step">
+      <div class="badge"><i>3</i> PLAY 竖屏双窗 · 点开横屏</div>
+      <div class="phone"><div class="notch"></div>
+        <div style="display:flex;flex-direction:column;height:100%;padding:36px 10px 12px;gap:8px;background:#050308">
+          <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:10px;border:1px solid rgba(167,139,250,.3);font-size:10px;color:#c4b5fd">
+            <span>←</span><span style="flex:1">短时体验 · 60s</span><span style="color:#fff;font-weight:700">0:60</span><span style="background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:999px;padding:2px 8px;color:#fff">结算</span>
+          </div>
+          <div style="flex:0 0 38%;border-radius:14px;overflow:hidden;border:1px solid rgba(167,139,250,.35);position:relative">
+            <img src="assets/storyboard-strip.jpg" style="width:100%;height:100%;object-fit:cover;opacity:.85"/>
+            <div style="position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,3,8,.35);font-size:11px;font-weight:700">点开横屏 · 过去分镜</div>
+          </div>
+          <div style="flex:1;border-radius:14px;overflow:hidden;border:1px solid rgba(167,139,250,.35);position:relative">
+            <img src="assets/pov-court.jpg" style="width:100%;height:100%;object-fit:cover"/>
+            <div style="position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,3,8,.35);font-size:11px;font-weight:700">点开横屏 · 第一人称球场</div>
+          </div>
+        </div>
+      </div>
+      <div class="logic">
+        <strong>交互逻辑 · 短时体验</strong>
+        <ul>
+          <li>与其它页相同：竖屏手机框内展示上下双窗</li>
+          <li>点上窗 → 横屏手机框看过去高光分镜</li>
+          <li>点下窗 → 横屏手机框玩第一人称（摇杆/技能）</li>
+          <li>「收起 · 竖屏」回到双窗；60s / 结算 → 结果页</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step">
+      <div class="badge"><i>4</i> RESULT 分享</div>
+      <div class="phone"><div class="notch"></div>
+        <div style="padding:40px 16px;height:100%;background:radial-gradient(ellipse at 50% 20%,rgba(109,40,217,.45),#050308 65%);text-align:center">
+          <div style="font-size:20px;font-weight:900">终场改写成功</div>
+          <div style="color:#a78bfa;font-size:12px;margin:6px 0 14px">突破上篮 · +2 · 加时锁定</div>
+          <img src="assets/star-james.jpg" style="width:70%;border-radius:16px;border:1px solid rgba(167,139,250,.4)"/>
+          <div style="display:flex;gap:6px;margin-top:14px">
+            <div style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);font-size:11px">保存</div>
+            <div style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);font-size:11px">微博</div>
+            <div style="flex:1;padding:10px;border-radius:10px;background:rgba(124,58,237,.35);border:1px solid rgba(167,139,250,.5);font-size:11px">阿里体育</div>
+          </div>
+          <div style="margin-top:12px;padding:10px;border-radius:999px;border:1px solid rgba(167,139,250,.35);font-size:12px">再来一局</div>
+        </div>
+      </div>
+      <div class="logic">
+        <strong>交互逻辑</strong>
+        <ul>
+          <li>展示本场改写结果卡（球星形象）</li>
+          <li>保存 / 分享；「再来一局」回首页</li>
+          <li>无「概念/已验证」标签</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>组件清单（对应 HTML）：</b>
+    顶栏 Logo · 手机壳 · 球星轮播卡 · 角色切换胶囊 · 主按钮 · 竖屏双窗（点开→横屏手机框）· 虚拟摇杆 · 技能键 · 比分 HUD · 结果卡 · 分享行。<br/>
+    视觉预览请用 htmlpreview，勿直接打开 jsDelivr HTML（会返回 text/plain）。
+  </div>
+</body>
+</html>

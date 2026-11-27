@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>
+(function () {
+  var host = location.hostname || "";
+  var online = /htmlpreview|github\.io|jsdelivr|statically|raw\.githack|gitcdn/i.test(host)
+    || /[?&]cdn=1\b/.test(location.search)
+    || location.protocol === "https:" && /cdn\.jsdelivr\.net/.test(host);
+  // jsDelivr serves .html as text/plain — use htmlpreview instead; still set base for that host
+  if (/htmlpreview/i.test(host) || /[?&]cdn=1\b/.test(location.search)) {
+    var b = document.createElement("base");
+    b.href = "https://cdn.jsdelivr.net/gh/cassini123/personalweb@cursor/nba-ali-prototype-8d2d/nba-ali-prototype/";
+    document.head.insertBefore(b, document.head.firstChild);
+  }
+})();
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>COURTWORLD · NBA × 阿里</title>
+<!-- v2-no-capability-tags -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient ambient-2" aria-hidden="true"></div>
+
+  <header class="topbar" id="topbar">
+    <div class="logo">COURT<span>WORLD</span></div>
+  </header>
+
+  <main class="stage" id="stage">
+    <!-- ENTER -->
+    <section class="screen active" id="screen-enter" data-screen="enter">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <h1 class="hero-title">无法到场<br/><em>也能改写终场</em></h1>
+          <p class="hero-sub">短时沉浸：上方回看高光，下方第一人称改写终场</p>
+          <div class="hero-visual hero-stars">
+            <img class="hero-star main" src="assets/star-james.jpg" alt="James" />
+            <img class="hero-star side left" src="assets/star-curry.jpg" alt="Curry" />
+            <img class="hero-star side right" src="assets/star-tatum.jpg" alt="Tatum" />
+            <div class="halo-ring"></div>
+          </div>
+          <button class="btn-primary" data-go="identity">进入球场</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>01 · 进入</h2>
+        <p>横屏双窗体验入口。紫黑白主色，球星动画卡。</p>
+      </aside>
+    </section>
+
+    <!-- IDENTITY -->
+    <section class="screen" id="screen-identity" data-screen="identity">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="enter" aria-label="返回">←</button>
+          <h2 class="screen-h">你想站在谁身边？</h2>
+          <p class="screen-p">滑动球星卡 · 锁定本场视角</p>
+          <div class="carousel" id="player-carousel">
+            <button class="car-card" data-player="curry" type="button">
+              <img src="assets/star-curry.jpg" alt="Curry" />
+              <span class="car-label">CURRY</span>
+            </button>
+            <button class="car-card active" data-player="james" type="button">
+              <img src="assets/star-james.jpg" alt="James" />
+              <span class="car-label">JAMES</span>
+            </button>
+            <button class="car-card" data-player="tatum" type="button">
+              <img src="assets/star-tatum.jpg" alt="Tatum" />
+              <span class="car-label">TATUM</span>
+            </button>
+            <button class="car-card" data-player="durant" type="button">
+              <img src="assets/star-durant.jpg" alt="Durant" />
+              <span class="car-label">DURANT</span>
+            </button>
+          </div>
+          <div class="role-row">
+            <button class="role-pill active" data-role="star" type="button">球星第一视角</button>
+            <button class="role-pill" data-role="fan" type="button">旁观席球迷</button>
+          </div>
+          <button class="btn-primary" data-go="play" id="btn-lock">锁定并开打</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>02 · 身份</h2>
+        <p>选球星后进入竖屏双窗；点开上/下窗可横屏。</p>
+      </aside>
+    </section>
+
+    <!-- PLAY · portrait phone split; tap pane → landscape -->
+    <section class="screen" id="screen-play" data-screen="play">
+      <div class="phone phone-play" id="phone-play">
+        <div class="phone-notch"></div>
+        <div class="phone-body phone-body-play">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <div class="play-chrome">
+            <button type="button" class="play-back" data-go="identity">←</button>
+            <div class="play-title">短时体验 · 60s</div>
+            <div class="play-timer" id="play-timer">0:60</div>
+            <button type="button" class="play-finish" data-go="result" data-result="past">结算</button>
+          </div>
+
+          <div class="play-split" id="play-split">
+            <!-- TOP: past storyboard feed -->
+            <div class="pane pane-top" id="pane-top">
+              <button type="button" class="pane-open" data-expand="top">点开横屏 · 过去分镜</button>
+              <div class="story-track" id="story-track">
+                <article class="story-card on" data-clip="0">
+                  <img src="assets/storyboard-strip.jpg" alt="高光分镜" />
+                  <div class="story-cap">
+                    <strong>2016 Finals G7</strong>
+                    <span>0.4s 定格 · 可回看</span>
+                  </div>
+                  <div class="story-progress"><i id="clip-progress"></i></div>
+                </article>
+                <article class="story-card" data-clip="1">
+                  <img src="assets/star-curry.jpg" alt="Curry 高光" />
+                  <div class="story-cap">
+                    <strong>外线风暴</strong>
+                    <span>三分雨 · 15s</span>
+                  </div>
+                </article>
+                <article class="story-card" data-clip="2">
+                  <img src="assets/star-james.jpg" alt="James 高光" />
+                  <div class="story-cap">
+                    <strong>突破撕扯</strong>
+                    <span>内线终结 · 15s</span>
+                  </div>
+                </article>
+                <article class="story-card" data-clip="3">
+                  <img src="assets/star-tatum.jpg" alt="Tatum 高光" />
+                  <div class="story-cap">
+                    <strong>空接终结</strong>
+                    <span>快攻扣篮 · 15s</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- BOTTOM: FPP court + MOBA controls -->
+            <div class="pane pane-bottom" id="pane-bottom">
+              <button type="button" class="pane-open" data-expand="bottom">点开横屏 · 第一人称球场</button>
+              <div class="court-stage" id="court-stage">
+                <img class="court-bg" id="court-bg" src="assets/pov-court.jpg" alt="第一人称球场" />
+                <div class="court-fx" id="court-fx"></div>
+                <div class="hud-score">
+                  <span id="score-us">98</span>
+                  <em>:</em>
+                  <span id="score-them">98</span>
+                  <small id="clock-q">Q4 00:12</small>
+                </div>
+                <div class="hud-action" id="hud-action">滑动摇杆移动 · 点技能出手</div>
+
+                <div class="stick" id="stick" aria-label="移动摇杆">
+                  <div class="stick-base"></div>
+                  <div class="stick-knob" id="stick-knob"></div>
+                </div>
+
+                <div class="skills" id="skills">
+                  <button type="button" class="skill" data-skill="pass">传球</button>
+                  <button type="button" class="skill" data-skill="drive">突破</button>
+                  <button type="button" class="skill skill-ult" data-skill="shoot">投篮</button>
+                  <button type="button" class="skill" data-skill="fake">假动作</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>03 · 双窗对战</h2>
+        <p>竖屏手机框内上下双窗。点开任一窗进入横屏大图；收起回到竖屏。</p>
+      </aside>
+    </section>
+
+    <!-- Landscape expand shell (phone-wide bezel) -->
+    <div class="ls-backdrop" id="ls-backdrop" hidden aria-hidden="true">
+      <button type="button" class="ls-close" id="ls-close">收起 · 竖屏</button>
+      <div class="ls-hint" id="ls-hint">横屏体验</div>
+    </div>
+
+    <!-- RESULT -->
+    <section class="screen" id="screen-result" data-screen="result">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="status-bar"><span>9:41</span><span class="dots">●●●</span></div>
+          <button class="back" data-go="play" aria-label="返回">←</button>
+          <h2 class="screen-h" id="result-title">终场改写成功</h2>
+          <p class="screen-p" id="result-sub">突破上篮 · +2 · 加时锁定</p>
+          <div class="result-card glass">
+            <img id="result-img" src="assets/star-james.jpg" alt="结果卡" />
+            <div class="result-glow"></div>
+          </div>
+          <div class="share-row">
+            <button type="button" class="share-btn" id="btn-save">保存卡片</button>
+            <button type="button" class="share-btn" id="btn-weibo">分享微博</button>
+            <button type="button" class="share-btn on" id="btn-ali">阿里体育</button>
+          </div>
+          <p class="toast" id="toast" hidden>已生成分享预览（演示）</p>
+          <button class="btn-ghost" data-go="enter">再来一局</button>
+        </div>
+      </div>
+      <aside class="aside">
+        <h2>04 · 生成 / 分享</h2>
+        <p>短时体验结算后输出高光卡。</p>
+      </aside>
+    </section>
+  </main>
+
+  <nav class="flow-nav" id="flow-nav" aria-label="流程导航">
+    <button type="button" class="flow-dot active" data-go="enter" title="进入">1</button>
+    <button type="button" class="flow-dot" data-go="identity" title="身份">2</button>
+    <button type="button" class="flow-dot" data-go="play" title="双窗对战">3</button>
+    <button type="button" class="flow-dot" data-go="result" title="分享">4</button>
+  </nav>
+
+  <footer class="proto-foot" id="proto-foot">
+    <a href="OPEN.md">打开方式</a>
+    <span>· 竖屏双窗 · 点开横屏</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
