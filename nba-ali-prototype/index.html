@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script>
+(function () {
+  var host = location.hostname || "";
+  var online = /htmlpreview|github\.io|jsdelivr|statically|raw\.githack|gitcdn/i.test(host)
+    || /[?&]cdn=1\b/.test(location.search)
+    || location.protocol === "https:" && /cdn\.jsdelivr\.net/.test(host);
+  // jsDelivr serves .html as text/plain — use htmlpreview instead; still set base for that host
+  if (/htmlpreview/i.test(host) || /[?&]cdn=1\b/.test(location.search)) {
+    var b = document.createElement("base");
+    b.href = "https://cdn.jsdelivr.net/gh/cassini123/personalweb@cursor/nba-ali-prototype-8d2d/nba-ali-prototype/";
+    document.head.insertBefore(b, document.head.firstChild);
+  }
+})();
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>COURTWORLD · NBA × 阿里</title>

@@ -1,20 +1,37 @@
-# 如何打开 COURTWORLD
+# 如何打开 COURTWORLD（有视觉）
 
-不要用 `/cursor/stores/...`（云端路径，Mac 无效）。
+## 为什么 jsDelivr 只有代码？
 
-## 在线（推荐）
+`cdn.jsdelivr.net/.../index.html` 的 Content-Type 是 **text/plain**，浏览器会显示源码而不是页面。这是 CDN 限制，不是项目坏了。
+
+## 推荐打开方式（会渲染界面）
+
+### 1) HTML Preview（推荐，可直接点）
 
 首页：
-https://cdn.jsdelivr.net/gh/cassini123/personalweb@cursor/nba-ali-prototype-8d2d/nba-ali-prototype/index.html
+https://htmlpreview.github.io/?https://github.com/cassini123/personalweb/blob/cursor/nba-ali-prototype-8d2d/nba-ali-prototype/index.html
 
-横屏双窗对战（上分镜 / 下第一人称）：
-https://cdn.jsdelivr.net/gh/cassini123/personalweb@cursor/nba-ali-prototype-8d2d/nba-ali-prototype/index.html?screen=play
+横屏双窗对战：
+https://htmlpreview.github.io/?https://github.com/cassini123/personalweb/blob/cursor/nba-ali-prototype-8d2d/nba-ali-prototype/index.html?screen=play
 
-说明：请横屏。上方过去高光分镜流（每段约 15s），下方王者式摇杆+技能，篮球规则短时 60s 体验。
+全流程大图：
+https://htmlpreview.github.io/?https://github.com/cassini123/personalweb/blob/cursor/nba-ali-prototype-8d2d/nba-ali-prototype/flow-board.html
 
-## Mac 本地
+### 2) Mac 本地文件
+
 ```
 open "$HOME/Library/Application Support/Cursor/AgentStores/cursor_agent_stores/bc-89b9f2b3-ab58-406f-9fbf-c13416485898/files/docs/nba-ali-prototype/index.html"
 ```
 
-PR: https://github.com/cassini123/personalweb/pull/1
+### 3) 本地服务器
+
+```
+cd nba-ali-prototype
+python3 -m http.server 8765
+```
+然后打开 http://127.0.0.1:8765/?screen=play （请横屏）
+
+### 4) GitHub Pages
+
+仓库已推送 `gh-pages` 分支。请在 GitHub → Settings → Pages → Source 选 `gh-pages` / root，启用后访问：
+https://cassini123.github.io/personalweb/?screen=play
